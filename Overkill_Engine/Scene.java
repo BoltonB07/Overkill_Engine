@@ -12,6 +12,7 @@ public class Scene
     }
 
     public static void make(String currentLoc, String describeLoc, String choicePrompt, double money, boolean showMoney, double HP, boolean ShowHP){
+        Scene.clear();
         currentLoc.trim(); describeLoc.trim(); choicePrompt.trim();
         if(currentLoc!=null){
             Print.textln();

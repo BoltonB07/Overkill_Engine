@@ -8,6 +8,9 @@ package Overkill_Engine;
 public class Print
 {
     public static void text(String text){ System.out.print(text.trim()); }
+    public static void text(boolean bool){
+        System.out.print(bool);
+    }
     public static void text(int num){
         System.out.print(num);
     }
@@ -25,6 +28,9 @@ public class Print
     }
     public static void textln(String text){
         System.out.println(text.trim());
+    }
+    public static void textln(boolean bool){
+        System.out.print(bool);
     }
     public static void textln(int num){
         System.out.print(num);
@@ -72,27 +78,19 @@ public class Print
         }
     }
     public static void lineln(String line, int length){
-        line.trim();
-        int numberOfTimesToPrintFull=length/line.length();
-        for(int i=1;i<=numberOfTimesToPrintFull;i++){
-            text(line);
-        }
-        int numberOfTimesToPrintOne=length%line.length();
-        for(int j=0; j<=numberOfTimesToPrintOne-1;j++){
-            text(Character.toString(line.charAt(j)));
-        }
+        line(line,length);
         textln();
     }
     public static void line(String line, int length, String text){
         line.trim();text.trim();
         if(length>text.length()){
-            int effectiveLength=length-text.length();  //a="--",length=6,text="abc",effectLengt=3
+            int effectiveLength=length-text.length();
             boolean ifOdd=false;
             if(effectiveLength%2==1){   //ifOdd=true
                 ifOdd=true;
             }
             if(ifOdd){
-                line(line, (effectiveLength/2)+1);//works correctly HERE
+                line(line, (effectiveLength/2)+1);
             }
             else{
                 line(line, effectiveLength/2);
@@ -108,28 +106,7 @@ public class Print
         }
     }
     public static void lineln(String line, int length, String text){
-        line.trim();text.trim();
-        if(length>text.length()){
-            int effectiveLength=length-text.length();  //a="--",length=6,text="abc",effectLengt=3
-            boolean ifOdd=false;
-            if(effectiveLength%2==1){   //ifOdd=true
-                ifOdd=true;
-            }
-            if(ifOdd){
-                line(line, (effectiveLength/2)+1);//works correctly HERE
-            }
-            else{
-                line(line, effectiveLength/2);
-            }
-            text(text);//works correctly
-            line(line, effectiveLength/2);//Fucks up shit,
-        }
-        else if(length<text.length()){
-            line(text,length);
-        }
-        else{
-            text(text);
-        }
+        line(line,length,text);
         textln();
     }
 }
