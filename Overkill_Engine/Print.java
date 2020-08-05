@@ -1,4 +1,4 @@
-package Overkill_Engine;
+ 
 /**
  * This class contains all methods regarding printing and outputting simple single line text and patterns.
  *
@@ -30,22 +30,22 @@ public class Print
         System.out.println(text.trim());
     }
     public static void textln(boolean bool){
-        System.out.print(bool);
+        System.out.println(bool);
     }
     public static void textln(int num){
-        System.out.print(num);
+        System.out.println(num);
     }
     public static void textln(char character){
-        System.out.print(character);
+        System.out.println(character);
     }
     public static void textln(double num){
-        System.out.print(num);
+        System.out.println(num);
     }
     public static void textln(float num){
-        System.out.print(num);
+        System.out.println(num);
     }
     public static void textln(long num){
-        System.out.print(num);
+        System.out.println(num);
     }
     public static void textln(){
         System.out.println();
@@ -67,7 +67,7 @@ public class Print
     }
 
     public static void line(String line, int length){
-        line.trim();
+        line=line.trim();
         int numberOfTimesToPrintFull=length/line.length();
         for(int i=1;i<=numberOfTimesToPrintFull;i++){
             text(line);
@@ -82,7 +82,7 @@ public class Print
         textln();
     }
     public static void line(String line, int length, String text){
-        line.trim();text.trim();
+        line=line.trim();text=text.trim();
         if(length>text.length()){
             int effectiveLength=length-text.length();
             boolean ifOdd=false;

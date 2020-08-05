@@ -1,4 +1,4 @@
-package Overkill_Engine;
+ 
 /**
  * This class contains methods regarding scenes and quickly generates scenes and options
  *
@@ -13,18 +13,20 @@ public class Scene
 
     public static void make(String currentLoc, String describeLoc, String choicePrompt, double money, boolean showMoney, double HP, boolean ShowHP){
         Scene.clear();
-        currentLoc.trim(); describeLoc.trim(); choicePrompt.trim();
         if(currentLoc!=null){
+            currentLoc=currentLoc.trim();
             Print.textln();
             Print.lineln("*",currentLoc.length());
             Print.textln(currentLoc.toUpperCase());
             Print.lineln("*",currentLoc.length());
         }
         if(describeLoc!=null){
+            describeLoc=describeLoc.trim();
             Print.textln(describeLoc);
             Print.textln();
         }
         if(choicePrompt!=null){
+            choicePrompt=choicePrompt.trim();
             Print.textln(choicePrompt);
             Print.textln();
         }
@@ -40,7 +42,7 @@ public class Scene
     public static void choice(String[] choices){
         Print.textln();
         for(int k=0;k<=choices.length-1;k++){
-            choices[k].trim();
+            choices[k]=choices[k].trim();
         }
         int longest=0, longestIndex=0;
         String longestOptionNumber;

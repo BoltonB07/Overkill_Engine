@@ -2,3 +2,5 @@
 /shelf/
 /*.xml
 /*.iml
+/*.class
+/*.ctxt
