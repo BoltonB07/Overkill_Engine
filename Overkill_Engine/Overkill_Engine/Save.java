@@ -18,19 +18,21 @@ public class Save {
         PrintWriter file = new PrintWriter("SaveFile.txt", StandardCharsets.UTF_8);
         FileWriter fileWriter = new FileWriter("SaveFile.txt",true);
         BufferedWriter br=new BufferedWriter(fileWriter);
-        br.write("null\n100.0\n0.0");
+        br.write("null\n100.0\n0.0\nnoweapon");
         br.close();
         file.close();
     }
      static String[] read() throws IOException {
-        String[] saveData = new String[4];
-        BufferedReader br= new BufferedReader(new FileReader("SaveFile.txt"));
-        Scanner sc=new Scanner(br.readLine());
-        saveData[0]= sc.next();
+         String[] saveData = new String[5];
+         BufferedReader br= new BufferedReader(new FileReader("SaveFile.txt"));
+         Scanner sc=new Scanner(br.readLine());
+         saveData[0]= sc.next();
          sc=new Scanner(br.readLine());
-        saveData[1]= sc.next();
+         saveData[1]= sc.next();
          sc=new Scanner(br.readLine());
-        saveData[2]= sc.next();
+         saveData[2]= sc.next();
+         sc=new Scanner(br.readLine());
+         saveData[3]= sc.next();
         String labelLines;
         String labels="";
         while((labelLines= br.readLine())!=null){
@@ -39,7 +41,7 @@ public class Save {
                 labels = labels.concat("\n" + sc.next());
             }
         }
-        saveData[3]=labels;
+        saveData[4]=labels;
         sc.close();
         br.close();
         return saveData;
@@ -50,11 +52,15 @@ public class Save {
      }
     public static String getLabels() throws IOException {
         String[] name = read();
-        return name[3];
+        return name[4];
     }
     public static double getMoney() throws IOException {
         String[] name = read();
         return Double.parseDouble(name[2]);
+    }
+    public static String getWeapon() throws IOException {
+        String[] name = read();
+        return name[3];
     }
     public static double getHP() throws IOException {
         String[] name = read();
@@ -93,10 +99,21 @@ public class Save {
             file.println(oldSave[i]);
         file.close();
     }
+    public static void setWeapon(String newWeapon) throws IOException {
+        String[] oldSave=Save.read();
+        PrintWriter file = new PrintWriter("SaveFile.txt");
+        file.println(oldSave[0]);
+        file.println(oldSave[1]);
+        file.println(oldSave[2]);
+        file.println(newWeapon);
+        for(int i = 4;i<=oldSave.length-1;i++)
+            file.println(oldSave[i]);
+        file.close();
+    }
     public static void addLabel(String label) throws IOException {
         String[] oldSave=Save.read();
         PrintWriter file=new PrintWriter("SaveFile.txt");
-        for(int i = 0;i<=3;i++)
+        for(int i = 0;i<=4;i++)
             file.println(oldSave[i]);
         file.println(label);
         file.close();
@@ -104,7 +121,7 @@ public class Save {
     public static void removeAllLabels() throws IOException {
         String[] oldSave=Save.read();
         PrintWriter file=new PrintWriter("SaveFile.txt");
-        for(int i = 0;i<=2;i++)
+        for(int i = 0;i<=3;i++)
             file.println(oldSave[i]);
         file.close();
     }
@@ -112,7 +129,7 @@ public class Save {
         String[] oldSave=Save.read();
         PrintWriter file = new PrintWriter("SaveFile.txt");
         Scanner sc=new Scanner(oldSave[3]);
-        for(int i=0;i<=2;i++){
+        for(int i=0;i<=3;i++){
             file.println(oldSave[i]);
         }
         String line;
@@ -123,5 +140,16 @@ public class Save {
         }
         file.close();
         sc.close();
+    }
+
+    public static void main(String[] args) throws IOException {
+        Save.make();
+        Save.setName("haha");
+        Save.setHP(100);
+        Save.setMoney(200);
+        Save.setWeapon("Knife");
+        Save.addLabel("buckyhouse");
+        Print.textln(getWeapon());
+        Print.textln(getLabels());
     }
 }

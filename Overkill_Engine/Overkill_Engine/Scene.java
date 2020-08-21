@@ -11,7 +11,7 @@ public class Scene
         System.out.println('\u000C');
     }
 
-    public static void make(String currentLoc, String describeLoc, String choicePrompt, double money, boolean showMoney, double HP, boolean ShowHP){
+    public static void make(String currentLoc, String describeLoc, String choicePrompt, double money, boolean showMoney, double HP, boolean showHP, String weapon, boolean showWeapon){
         Scene.clear();
         if(currentLoc!=null){
             currentLoc=currentLoc.trim();
@@ -34,8 +34,12 @@ public class Scene
             Print.textln("You have $"+money);
             Print.textln();
         }
-        if(ShowHP){
+        if(showHP){
             Print.textln("Your HP: "+HP);
+            Print.textln();
+        }
+        if(showWeapon){
+            Print.textln("Your weapon: "+weapon);
         }
     }
 
