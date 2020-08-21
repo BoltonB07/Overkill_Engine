@@ -22,7 +22,7 @@ public class Save {
         br.close();
         file.close();
     }
-     static String[] read() throws IOException {
+     public static String[] read() throws IOException {
          String[] saveData = new String[5];
          BufferedReader br= new BufferedReader(new FileReader("SaveFile.txt"));
          Scanner sc=new Scanner(br.readLine());
