@@ -1,4 +1,4 @@
- 
+package Overkill_Engine;
 /**
  * This class contains all methods regarding printing and outputting simple single line text and patterns.
  *
@@ -86,7 +86,7 @@ public class Print
         if(length>text.length()){
             int effectiveLength=length-text.length();
             boolean ifOdd=false;
-            if(effectiveLength%2==1){   //ifOdd=true
+            if(effectiveLength%2==1){
                 ifOdd=true;
             }
             if(ifOdd){
@@ -95,8 +95,8 @@ public class Print
             else{
                 line(line, effectiveLength/2);
             }
-            text(text);//works correctly
-            line(line, effectiveLength/2);//Fucks up shit,
+            text(text);
+            line(line, effectiveLength/2);
         }
         else if(length<text.length()){
             line(text,length);
