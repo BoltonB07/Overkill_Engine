@@ -57,6 +57,13 @@ public class Print
         Print.lineln(headerLineMaker,headerText.length());
         Print.textln();
     }
+    public static void header(String headerText){
+        Print.textln();
+        Print.lineln("-",headerText.length());
+        Print.textln(headerText.toUpperCase().trim());
+        Print.lineln("-",headerText.length());
+        Print.textln();
+    }
     public static void error(String error_message){
 
         System.out.println("Error: "+error_message.trim());
